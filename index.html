@@ -2,253 +2,252 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Брутальные Знакомства</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bizarre Dating</title>
     <style>
-        body {
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Arial', sans-serif;
-            background-image: url('https://img.freepik.com/premium-vector/white-seamless-hearts-pattern-black-background_713536-285.jpg');
+        }
+
+        body {
+            background: url('https://img.freepik.com/premium-vector/white-seamless-hearts-pattern-black-background_713536-285.jpg');
             color: #fff;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
+            background: rgba(25, 0, 10, 0.9);
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff3366;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .filters {
-            background: rgba(88, 24, 56, 0.9);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
             display: flex;
-            gap: 30px;
+            gap: 20px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
         }
 
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .filter-group label {
-            font-size: 18px;
-            color: #ff69b4;
-        }
-
-        select, input[type="range"] {
-            padding: 8px;
-            border-radius: 8px;
-            border: 2px solid #ff69b4;
-            background: #2a0a1a;
+        select {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: #ff3366;
             color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
         }
 
-        .profiles {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 25px;
+        select:hover {
+            background: #ff1a4d;
+            transform: scale(1.05);
         }
 
         .profile-card {
-            background: rgba(88, 24, 56, 0.9);
+            background: rgba(255, 51, 102, 0.1);
             border-radius: 15px;
             padding: 20px;
+            margin-bottom: 20px;
             display: flex;
             gap: 20px;
+            align-items: center;
             transition: transform 0.3s;
+            border: 1px solid #ff3366;
         }
 
         .profile-card:hover {
             transform: translateY(-5px);
         }
 
-        .photo-btn {
-            background: #ff69b4;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            color: white;
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
             cursor: pointer;
-            transition: background 0.3s;
+            border: 3px solid #ff3366;
+            transition: transform 0.3s;
         }
 
-        .photo-btn:hover {
-            background: #ff1493;
+        .profile-photo:hover {
+            transform: scale(1.1);
         }
 
         .profile-info {
-            flex-grow: 1;
+            flex: 1;
+        }
+
+        .show-photo {
+            background: #ff3366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .show-photo:hover {
+            background: #ff1a4d;
+            transform: scale(1.05);
         }
 
         .name {
             font-size: 24px;
-            margin: 0 0 10px;
-            color: #ff69b4;
+            color: #ff3366;
+            margin-bottom: 10px;
         }
 
         .description {
             font-style: italic;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            color: #ff99b3;
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+        .details {
+            color: #ffb3c6;
+            font-size: 14px;
         }
 
-        .modal-content {
-            max-width: 80%;
-            max-height: 80%;
-            border-radius: 15px;
-        }
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
 
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #ff69b4;
-            font-size: 40px;
-            cursor: pointer;
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <h1>💘 Bizarre Dating 💘</h1>
+        
         <div class="filters">
-            <div class="filter-group">
-                <label>Пол:</label>
-                <select id="genderFilter">
-                    <option value="all">Все</option>
-                    <option value="мужчина">Мужчины</option>
-                    <option value="женщина">Женщины</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Возраст:</label>
-                <input type="range" id="ageFilter" min="18" max="100" value="100">
-                <span id="ageValue">до 100</span>
-            </div>
+            <select id="genderFilter">
+                <option value="all">Все полы</option>
+                <option value="мужчина">Мужчины</option>
+                <option value="женщина">Женщины</option>
+            </select>
+            
+            <select id="ageFilter">
+                <option value="all">Все возрасты</option>
+                <option value="30-40">30-40 лет</option>
+                <option value="40-50">40-50 лет</option>
+            </select>
         </div>
 
-        <div class="profiles">
-            <!-- Анкеты -->
-            <div class="profile-card" data-gender="мужчина" data-age="49">
-                <button class="photo-btn" onclick="showPhoto('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8tvMxvvtQxc4ydkSmC9MwVg-UBXirWjrxQ&s')">Фото</button>
-                <div class="profile-info">
-                    <h2 class="name">Артём Бухланович</h2>
-                    <p class="description">Мужчина брутальный, средних лет люблю немного пиваса, ищу дикую касандру</p>
-                    <p>Возраст: 49</p>
-                    <p>Пол: Мужчина</p>
-                </div>
-            </div>
-
-            <div class="profile-card" data-gender="мужчина" data-age="40">
-                <button class="photo-btn" onclick="showPhoto('https://i.pinimg.com/736x/a9/a9/59/a9a959a06d94ec0c938cb10d83752886.jpg')">Фото</button>
-                <div class="profile-info">
-                    <h2 class="name">Валера Таджикович</h2>
-                    <p class="description">Приехал для тебя моя родная поесть лаваш с хлебом и мясом. Буду любить как волк лисицу и как заяц птицу и как я пиво и ты скотина.</p>
-                    <p>Возраст: 40</p>
-                    <p>Пол: Мужчина</p>
-                </div>
-            </div>
-
-            <div class="profile-card" data-gender="женщина" data-age="43">
-                <button class="photo-btn" onclick="showPhoto('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdjmRo1ouDg6AzdQQK9_L7UNN8U1hL3weN1g&s')">Фото</button>
-                <div class="profile-info">
-                    <h2 class="name">Ольга Буратовна</h2>
-                    <p class="description">Для своих руссалка, но для других я просто леди баг, та самая касандра</p>
-                    <p>Возраст: 43</p>
-                    <p>Пол: Женщина</p>
-                </div>
-            </div>
-
-            <div class="profile-card" data-gender="женщина" data-age="38">
-                <button class="photo-btn" onclick="showPhoto('https://samogonn.ru/image/cache/data/Alkash/Ushanka/logo%20shapka-800x800.jpg')">Фото</button>
-                <div class="profile-info">
-                    <h2 class="name">Ольга Пузова</h2>
-                    <p class="description">Типичная русская альфо самец, выношу людей с одного удара, если вы трезвый</p>
-                    <p>Возраст: 38</p>
-                    <p>Пол: Женщина</p>
-                </div>
-            </div>
-
-            <div class="profile-card" data-gender="мужчина" data-age="34">
-                <button class="photo-btn" onclick="showPhoto('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv0QQ_RgqngV5cKXIug16m74d5oQBzS6JxzQ&s')">Фото</button>
-                <div class="profile-info">
-                    <h2 class="name">Аркадий Пивовозов</h2>
-                    <p class="description">Фокусник днём, лев ночью. В городе много кустов, а буду ссать именно на тебя моя родная)))))</p>
-                    <p>Возраст: 34</p>
-                    <p>Пол: Мужчина</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="photoModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
+        <div id="profiles"></div>
     </div>
 
     <script>
-        function showPhoto(url) {
-            const modal = document.getElementById('photoModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.style.display = 'flex';
-            modalImg.src = url;
-        }
+        const profiles = [
+            {
+                name: 'Артём Бухланович',
+                description: 'мужчина брутальный, средних лет люблю немного пиваса, ищу дикую касандру',
+                age: 49,
+                gender: 'мужчина',
+                photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt8tvMxvvtQxc4ydkSmC9MwVg-UBXirWjrxQ&s'
+            },
+            {
+                name: 'Валера Таджикович',
+                description: 'приехал для тебя моя родная поесть лаваш с хлебом и мясом. Буду любить как волк лисицу и как заяц птицу и как я пиво и ты скотина.',
+                age: 40,
+                gender: 'мужчина',
+                photo: 'https://i.pinimg.com/736x/a9/a9/59/a9a959a06d94ec0c938cb10d83752886.jpg'
+            },
+            {
+                name: 'Ольга Буратовна',
+                description: 'Для своих руссалка, но для других я просто леди баг, та самая касандра',
+                age: 43,
+                gender: 'женщина',
+                photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdjmRo1ouDg6AzdQQK9_L7UNN8U1hL3weN1g&s'
+            },
+            {
+                name: 'Ольга Пузова',
+                description: 'типичная русская альфо самец, выношу людей с одного удара, если вы трезвый',
+                age: 38,
+                gender: 'женщина',
+                photo: 'https://samogonn.ru/image/cache/data/Alkash/Ushanka/logo%20shapka-800x800.jpg'
+            },
+            {
+                name: 'Аркадий Пивовозов',
+                description: 'фокусник днём, лев ночью. в городе много кустов, а буду ссать именно на тебя моя родная)))))',
+                age: 34,
+                gender: 'мужчина',
+                photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv0QQ_RgqngV5cKXIug16m74d5oQBzS6JxzQ&s'
+            }
+        ];
 
-        function closeModal() {
-            document.getElementById('photoModal').style.display = 'none';
-        }
+        function renderProfiles() {
+            const gender = document.getElementById('genderFilter').value;
+            const ageRange = document.getElementById('ageFilter').value;
+            
+            const filtered = profiles.filter(profile => {
+                const ageMatch = ageRange === 'all' || 
+                    (ageRange === '30-40' && profile.age >= 30 && profile.age <= 40) ||
+                    (ageRange === '40-50' && profile.age >= 40 && profile.age <= 50);
+                
+                const genderMatch = gender === 'all' || profile.gender === gender;
+                
+                return ageMatch && genderMatch;
+            });
 
-        // Фильтрация
-        const genderFilter = document.getElementById('genderFilter');
-        const ageFilter = document.getElementById('ageFilter');
-        const ageValue = document.getElementById('ageValue');
+            const html = filtered.map(profile => `
+                <div class="profile-card">
+                    <img src="${profile.photo}" class="profile-photo" style="display:none;">
+                    <div class="profile-info">
+                        <button class="show-photo">👀 Посмотреть фото</button>
+                        <h2 class="name">${profile.name}</h2>
+                        <p class="description">${profile.description}</p>
+                        <div class="details">
+                            Возраст: ${profile.age}<br>
+                            Пол: ${profile.gender}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
 
-        ageFilter.addEventListener('input', updateFilters);
-        genderFilter.addEventListener('change', updateFilters);
+            document.getElementById('profiles').innerHTML = html;
 
-        function updateFilters() {
-            const selectedGender = genderFilter.value;
-            const maxAge = ageFilter.value;
-            ageValue.textContent = `до ${maxAge}`;
-
-            document.querySelectorAll('.profile-card').forEach(card => {
-                const cardGender = card.dataset.gender;
-                const cardAge = parseInt(card.dataset.age);
-
-                const genderMatch = selectedGender === 'all' || cardGender === selectedGender;
-                const ageMatch = cardAge <= maxAge;
-
-                card.style.display = genderMatch && ageMatch ? 'flex' : 'none';
+            // Добавляем обработчики для кнопок
+            document.querySelectorAll('.show-photo').forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    const img = btn.parentElement.parentElement.querySelector('.profile-photo');
+                    img.style.display = img.style.display === 'none' ? 'block' : 'none';
+                });
             });
         }
 
-        // Закрытие модального окна при клике вне изображения
-        window.onclick = function(event) {
-            const modal = document.getElementById('photoModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
+        // Инициализация и обработчики фильтров
+        document.getElementById('genderFilter').addEventListener('change', renderProfiles);
+        document.getElementById('ageFilter').addEventListener('change', renderProfiles);
+        renderProfiles();
     </script>
 </body>
 </html>
-<style>
-
-</style>
-<script>
-
-</script>
